@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:qr_parser/src/qr_models/qr_link/qr_link.dart';
 import 'package:qr_parser/src/qr_models/qr_mailto/qr_mail_to.dart';
 import 'package:qr_parser/src/qr_models/qr_phone/qr_phone.dart';
 import 'package:qr_parser/src/qr_models/qr_sms_to/qr_sms_to.dart';
 import 'package:qr_parser/src/qr_models/qr_text/qr_text.dart';
-import 'package:qr_parser/src/qr_models/qr_url/qr_url.dart';
 import 'package:qr_parser/src/qr_models/qr_wifi/qr_wifi.dart';
 import 'package:qr_parser/src/utils/qr_code.dart';
 
@@ -26,7 +26,7 @@ class Example extends StatelessWidget {
     final mailto = QrMailTo.fromRawData(rawData: mailToData);
     final smsTo = QrSmsTo.fromRawData(rawData: smsToData);
     final phone = QrPhoneModel.fromRawData(rawData: phoneData);
-    final url = QrUrl.fromRawData(rawData: urlData);
+    final url = QrLink.fromRawData(rawData: urlData);
     final text = QrText(rawData: textData);
     return Scaffold(
       body:

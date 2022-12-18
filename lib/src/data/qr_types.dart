@@ -1,1 +1,1 @@
-enum QrType {text, url, wifi, vcard, phone, mailto, smsto, unidentified}
+enum QrType {text, link, wifi, vcard, phone, mailto, smsto, unidentified}

@@ -4,9 +4,10 @@ import 'package:qr_parser/src/qr_models/qr_mailto/qr_mail_to.dart';
 import 'package:qr_parser/src/qr_models/qr_phone/qr_phone.dart';
 import 'package:qr_parser/src/qr_models/qr_sms_to/qr_sms_to.dart';
 import 'package:qr_parser/src/qr_models/qr_text/qr_text.dart';
-import 'package:qr_parser/src/qr_models/qr_url/qr_url.dart';
 import 'package:qr_parser/src/qr_models/qr_wifi/qr_wifi.dart';
 import 'package:qr_parser/src/utils/base_qr.dart';
+
+import '../qr_models/qr_link/qr_link.dart';
 
 abstract class QrCode {
   QrType get type;
@@ -25,9 +26,9 @@ abstract class QrCode {
       case Schemes.smsToScheme:
         return QrType.smsto;
       case Schemes.urlSafeScheme:
-        return QrType.url;
+        return QrType.link;
       case Schemes.urlScheme:
-        return QrType.url;
+        return QrType.link;
       default:
         return QrType.unidentified;
     }
@@ -47,9 +48,9 @@ abstract class QrCode {
       case Schemes.smsToScheme:
         return QrSmsTo.fromRawData(rawData: rawData);
       case Schemes.urlSafeScheme:
-        return QrUrl.fromRawData(rawData: rawData);
+        return QrLink.fromRawData(rawData: rawData);
       case Schemes.urlScheme:
-        return QrUrl.fromRawData(rawData: rawData);
+        return QrLink.fromRawData(rawData: rawData);
       default:
         return BaseQrModel(rawData: rawData);
     }
