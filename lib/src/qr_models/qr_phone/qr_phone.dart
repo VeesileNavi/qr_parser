@@ -6,12 +6,14 @@ import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import '../../data/schemes.dart';
 import '../../utils/launcher.dart';
 
-class QrPhoneModel extends BaseQrModel with Launcher {
-  QrPhoneModel({required super.rawData, required String phoneNumber})
+class QrPhoneModel extends BaseQrModel with Launcher{
+  QrPhoneModel._({required super.rawData, required this.phoneNumber})
       : assert(phoneNumber.isNotEmpty);
 
+  final String phoneNumber;
+
   @override
-  QrTypes get type => QrTypes.phone;
+  QrType get type => QrType.phone;
 
   String get phoneOnlyDigits => String.fromCharCodes(
       super.rawData.codeUnits.where((unit) => OnlySpecificDigits.isDigit(unit)));
@@ -21,8 +23,7 @@ class QrPhoneModel extends BaseQrModel with Launcher {
     if (phoneUri.scheme != Schemes.phoneScheme) {
       throw Exception('This is not a phone number');
     } else {
-      var l = QrPhoneModel(rawData: rawData, phoneNumber: phoneUri.path);
-      return QrPhoneModel(rawData: rawData, phoneNumber: phoneUri.path);
+      return QrPhoneModel._(rawData: rawData, phoneNumber: phoneUri.path);
     }
   }
 

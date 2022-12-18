@@ -1,7 +1,13 @@
+import 'package:qr_parser/src/utils/qr_code.dart';
+
 import '../data/qr_types.dart';
 
-class BaseQrModel {
+class BaseQrModel with QrCode{
+  @override
   final String rawData;
-  QrTypes get type => QrTypes.unidentified;
+
+  @override
+  QrType get type => QrType.unidentified;
+
   const BaseQrModel({required this.rawData});
 }

@@ -6,15 +6,19 @@ import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 import '../../utils/launcher.dart';
 
-class QrMailTo extends BaseQrModel with Launcher {
-  const QrMailTo(
+class QrMailTo extends BaseQrModel with Launcher{
+  const QrMailTo._(
       {required super.rawData,
-      required String email,
-      required String subject,
-      required String body});
+      required this.email,
+      required this.subject,
+      required this.body});
+
+  final String email;
+  final String subject;
+  final String body;
 
   @override
-  QrTypes get type => QrTypes.mailto;
+  QrType get type => QrType.mailto;
 
   factory QrMailTo.fromRawData({required String rawData}) {
     final mailtoUri = Uri.parse(rawData);
@@ -23,7 +27,7 @@ class QrMailTo extends BaseQrModel with Launcher {
       throw Exception('This is not mailTo url');
     }
 
-    return QrMailTo(
+    return QrMailTo._(
       rawData: rawData,
       email: mailtoUri.path,
       subject: mailtoUri.queryParameters['subject'] ?? '',

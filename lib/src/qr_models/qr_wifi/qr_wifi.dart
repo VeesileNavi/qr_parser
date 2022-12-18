@@ -2,22 +2,27 @@ import 'package:qr_parser/src/data/schemes.dart';
 
 import '../../data/qr_types.dart';
 import '../../utils/base_qr.dart';
-import 'qr_wifi_data.dart';
+import 'qr_wifi_reg_exp.dart';
+
 ///This model contains all the necessary information about the Wi-Fi network transmitted in the qr-code
 class QrWifi extends BaseQrModel {
 
   ///Define he constructor
-  QrWifi({
+  QrWifi._({
     required super.rawData,
-    required String ssid,
-    required bool hidden,
-    String? certificate,
-    String? password,
+    required  this.ssid,
+    required this.hidden,
+    this.certificate,
+    this.password,
   });
 
+  final String ssid;
+  final bool hidden;
+  final String? certificate;
+  final String? password;
   ///Getter to get qr code type
   @override
-  QrTypes get type => QrTypes.wifi;
+  QrType get type => QrType.wifi;
 
   ///The constructor allows you to get the Wi-Fi model using raw data
   factory QrWifi.fromRawData({required String rawData}) {
@@ -46,7 +51,7 @@ class QrWifi extends BaseQrModel {
       );
 
       ///Return whole qrWifiModel
-      return QrWifi(
+      return QrWifi._(
         rawData: rawData,
         ssid: ssid ?? '',
         certificate: certificate,
