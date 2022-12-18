@@ -8,9 +8,10 @@ There was a need to process standard data, which is usually encrypted in qr code
 But no libraries of this type were found on pub.dev.
 So i wrote it by myself.
 
-###The principle of operation is insanely simple - we process raw data from the qr-code with a parser -> we get its type and then we work with a convenient data format.
+### The principle of operation is insanely simple:
+We process raw data from the qr-code with a parser -> we get its type and then we work with a convenient data format.
 
-###Currently supports:
+### Currently supports:
 *Text,
 *wifi,
 *links,
