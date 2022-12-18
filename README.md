@@ -12,12 +12,12 @@ So i wrote it by myself.
 We process raw data from the qr-code with a parser -> we get its type and then we work with a convenient data format.
 
 ### Currently supports:
-*Text,
-*wifi,
-*links,
-*Phone,
-*SMS,
-*E-mail.
+* Text,
+* wifi,
+* links,
+* Phone,
+* SMS,
+* E-mail.
 
 In the future, I will add support for v-card and much more, to which my hands will reach.
 
